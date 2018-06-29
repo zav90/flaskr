@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask ,render_template
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = r"mysql+pymysql://sql7245242:YzvNeHxF8X@sql7.freemysqlhosting.net:3306/sql7245242"
@@ -19,7 +19,7 @@ class Example(db.Model):
 
 @app.route('/')
 def hello():
-    return '<h2>testing<h2>'
+    return render_template('index.html')
 
 
 @app.route('/test')
