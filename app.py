@@ -1,10 +1,23 @@
 from flask import Flask ,render_template
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = r"mysql+pymysql://sql7245242:YzvNeHxF8X@sql7.freemysqlhosting.net:3306/sql7245242"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+#app.config['SQLALCHEMY_DATABASE_URI'] = r"mysql+pymysql://sql7245242:YzvNeHxF8X@sql7.freemysqlhosting.net:3306/sql7245242"
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
+    username="Zav9027",
+    password="iliyaZav27",
+    hostname="Zav9027.mysql.pythonanywhere-services.com",
+    databasename="Zav9027$Gambling",
+)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_POOL_TIMEOUT"] = 100
+
 
 db = SQLAlchemy(app)
+
 
 class Example(db.Model):
     __tablename__ = 'Games'
@@ -17,10 +30,13 @@ class Example(db.Model):
         self.team1 = team1
         self.team2 = team2
 
+db.create_all()
+db.session.commit()
+
 @app.route('/')
 def hello():
-    #return '<h2>test<h2>'
-    games = Example.query.all()
+    return '<h2>test<h2>'
+    #games = Example.query.all()
     return render_template('index.html',games=games)
 
 
