@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import sshtunnel
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = r"mysql+pymysql://sql7245242:YzvNeHxF8X@sql7.freemysqlhosting.net:3306/sql7245242"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
