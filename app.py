@@ -19,7 +19,7 @@ class Example(db.Model):
 
 @app.route('/')
 def hello():
-    games = Example.query.all()
+    #games = Example.query.all()
     return render_template('index.html',games=games)
 
 
