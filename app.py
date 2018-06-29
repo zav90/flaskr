@@ -22,21 +22,18 @@ db = SQLAlchemy(app)
 class Example(db.Model):
     __tablename__ = 'Games'
     id = db.Column('id',db.Integer,primary_key=True)
-    team1 = db.Column('team1',db.VARCHAR)
-    team2 = db.Column('team2', db.VARCHAR)
+    team1 = db.Column('team1',db.VARCHAR(length=100))
+    team2 = db.Column('team2', db.VARCHAR(length=100))
 
     def __init__(self,id,team1,team2):
         self.id = id
         self.team1 = team1
         self.team2 = team2
 
-db.create_all()
-db.session.commit()
 
 @app.route('/')
 def hello():
-    return '<h2>test<h2>'
-    #games = Example.query.all()
+    games = Example.query.all()
     return render_template('index.html',games=games)
 
 
