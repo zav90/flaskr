@@ -19,7 +19,8 @@ class Example(db.Model):
 
 @app.route('/')
 def hello():
-    return render_template('index.html')
+    games = Example.query.all()
+    return render_template('index.html',games=games)
 
 
 @app.route('/test')
@@ -30,4 +31,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

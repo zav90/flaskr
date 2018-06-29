@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
     <meta charset="UTF-8">
     <title>Teams from DB</title>
 
 </head>
 <body>
-<h2>testing from html</h2>
+<div>This games are available:
+    <table>
+      <tr>
+        <th>first team</th>
+        <th>second team</th>
+
+      </tr>
+    {% for item in games %}
+       <tr>
+            <td> {{ item.team1  }} </td>
+            <td> {{ item.team2  }} </td>
+       </tr>
+    {% endfor %}
+    </table>
+</div>
+<h2>testing frosssm html</h2>
 </body>
 </html>
